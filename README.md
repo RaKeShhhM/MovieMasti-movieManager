@@ -6,33 +6,65 @@ MovieMasti is a premium, full-stack MERN movie management and streaming discover
 <p align="center"> <a href="https://youtu.be/PxQGj0LDFmM"> <img src="https://img.youtube.com/vi/PxQGj0LDFmM/maxresdefault.jpg" width="700" alt="MovieMasti Demo Video"/> </a> </p> <p align="center"> 👉 <b>Click the thumbnail above to watch the full website demo</b> </p>
 ## 🚀 Core Features
 
-### 👤 For Users
-- **Dynamic Browsing:** Discover films via Newest Releases, Top Rated, and Featured sections.
-- **Advanced Filtering:** Instant search by name, genre-based navigation, and year filtering.
-- **Interactive Cinema:** View detailed movie pages and leave comments/reviews.
-- **Personalized Profile:** Manage cinematic identity and update user credentials.
-- **Responsive Experience:** Fully optimized for mobile, tablet, and desktop viewing.
+📖 Project Setup Guide (Add this to your README)
+🛠️ Prerequisites
+Before you begin, ensure you have the following installed:
 
-### 🔐 For Admins (Dashboard)
-- **Content Management:** Full CRUD operations (Add, Update, Delete) for movies and genres.
-- **Data Analytics:** Real-time tracking of Total Users, Total Movies, and Comment engagement.
-- **User Management:** Oversee the community and moderate content.
-- **Genre Control:** Organize the platform's categorization system.
+Node.js (v18 or higher)
 
-## 🛠️ Tech Stack
+MongoDB (Local or Atlas Cluster)
 
-**Frontend:** - **React.js** (Functional Components, Hooks)
-- **Redux Toolkit & RTK Query** (Advanced State Management & API Caching)
-- **Tailwind CSS** (Custom Glassmorphism & Cinematic UI)
-- **React Router Dom** (SPA Navigation)
+NPM (comes with Node)
 
-**Backend:**
-- **Node.js & Express.js** (Restful API Design)
-- **MongoDB & Mongoose** (NoSQL Database Management)
-- **JSON Web Token (JWT)** (Secure Authentication)
+1. Clone and Install
+First, grab the code and install the dependencies for both the root (backend) and the frontend folder.
 
----
----
+Bash
+git clone <your-repo-link>
+cd my-movies
+npm install
+cd frontend && npm install
+cd ..
+2. Environment Variables (.env)
+Create a .env file in the root directory and add the following:
+
+Code snippet
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_key
+NODE_ENV=development
+3. Folder Structure
+Your project is organized by feature and responsibility:
+
+/backend: Express server, Mongoose models, and JWT middleware.
+
+/frontend: React (Vite) with Redux Toolkit state management.
+
+/frontend/src/features: Contains authSlice and moviesSlice for RTK logic.
+
+/frontend/src/api: Contains apiSlice for RTK Query endpoints.
+
+⚡ Running the Application
+You don't need to open two terminals. Because of the concurrently package in your package.json, you can launch the entire ecosystem with one command:
+
+Bash
+npm run fullstack
+Backend: Runs on http://localhost:5000 (Nodemon)
+
+Frontend: Runs on http://localhost:5173 (Vite)
+
+🛡️ Key Features to Highlight
+State Management Flow
+Your app uses RTK Query to handle the server state. Instead of manual loading spinners and error variables, the apiSlice provides them automatically.
+
+Security Layer
+Authentication: Users sign up/login via bcryptjs hashing.
+
+Authorization: The backend checks the JWT inside the cookie.
+
+Protected Routes: React Router prevents non-admins from accessing the /admin dashboard.
+
+
 
 
 
