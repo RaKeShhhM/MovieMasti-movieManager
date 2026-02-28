@@ -32,14 +32,8 @@ MovieMasti is a premium, full-stack MERN movie management and streaming discover
 - **JSON Web Token (JWT)** (Secure Authentication)
 
 ---
-
-## 📸 Screenshots
-
-| Home Page | Admin Dashboard | Movie Details |
-| :---: | :---: | :---: |
-| ![Home](https://via.placeholder.com/300x200) | ![Dashboard](https://via.placeholder.com/300x200) | ![Details](https://via.placeholder.com/300x200) |
-
 ---
+
 
 
 
