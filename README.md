@@ -2,9 +2,8 @@
 
 MovieMasti is a premium, full-stack MERN movie management and streaming discovery platform. Designed with a high-end, dark-mode "Netflix-style" aesthetic, it offers a seamless experience for both cinema enthusiasts and site administrators.
 
-[![Watch the video](https://img.youtube.com/vi/PxQGj0LDFmM/maxresdefault.jpg)](https://youtu.be/PxQGj0LDFmM)
-
-
+🎥 Live Demo (Video Walkthrough)
+<p align="center"> <a href="https://youtu.be/PxQGj0LDFmM"> <img src="https://img.youtube.com/vi/PxQGj0LDFmM/maxresdefault.jpg" width="700" alt="MovieMasti Demo Video"/> </a> </p> <p align="center"> 👉 <b>Click the thumbnail above to watch the full website demo</b> </p>
 ## 🚀 Core Features
 
 ### 👤 For Users
@@ -41,5 +40,6 @@ MovieMasti is a premium, full-stack MERN movie management and streaming discover
 | ![Home](https://via.placeholder.com/300x200) | ![Dashboard](https://via.placeholder.com/300x200) | ![Details](https://via.placeholder.com/300x200) |
 
 ---
+
 
 
