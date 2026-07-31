@@ -24,6 +24,7 @@ import AllMovies from "./pages/Movies/AllMovies.jsx";
 import MovieDetails from "./pages/Movies/MovieDetails.jsx";
 import AllComments from "./pages/Admin/AllComments.jsx";
 import AdminDashboard from "./pages/Admin/Dashboard/AdminDashboard.jsx";
+import Watchlist from "./pages/Movies/Watchlist.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/movies/:id" element={<MovieDetails />} />
+      <Route path="/watchlist" element={<Watchlist />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />

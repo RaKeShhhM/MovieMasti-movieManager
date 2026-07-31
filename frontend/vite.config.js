@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+//it's used to proxy the api requests to the backend server during development 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],

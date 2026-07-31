@@ -1,106 +1,222 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import MovieCard from "../pages/Movies/MovieCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import MovieCard from "../pages/Movies/MovieCard";
 
-const NextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-teal-500 backdrop-blur-md p-2 rounded-full transition-all duration-300 border border-white/10 group"
-  >
-    <ChevronRight className="text-white group-hover:scale-110" size={24} />
-  </button>
-);
+const NextArrow = ({ onClick }) => {
+  return (
+    <button
+      type="button"
+      aria-label="Next movies"
+      onClick={onClick}
+      className="
+        absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2
+        z-20
+        w-11 h-11
+        flex items-center justify-center
+        rounded-full
+        bg-black/70
+        backdrop-blur-xl
+        border border-white/10
+        text-white
+        shadow-xl
+        transition-all duration-300
+        hover:bg-teal-500
+        hover:border-teal-400
+        hover:scale-110
+        active:scale-95
+      "
+    >
+      <ChevronRight size={22} />
+    </button>
+  );
+};
 
-const PrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-teal-500 backdrop-blur-md p-2 rounded-full transition-all duration-300 border border-white/10 group"
-  >
-    <ChevronLeft className="text-white group-hover:scale-110" size={24} />
-  </button>
-);
+const PrevArrow = ({ onClick }) => {
+  return (
+    <button
+      type="button"
+      aria-label="Previous movies"
+      onClick={onClick}
+      className="
+        absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2
+        z-20
+        w-11 h-11
+        flex items-center justify-center
+        rounded-full
+        bg-black/70
+        backdrop-blur-xl
+        border border-white/10
+        text-white
+        shadow-xl
+        transition-all duration-300
+        hover:bg-teal-500
+        hover:border-teal-400
+        hover:scale-110
+        active:scale-95
+      "
+    >
+      <ChevronLeft size={22} />
+    </button>
+  );
+};
 
-const SliderUtil = ({ data }) => {
-  // 1. Determine the number of items
-  const itemCount = data?.length || 0;
+const SliderUtil = ({ data = [] }) => {
+  const itemCount = data.length;
 
-  // 2. Dynamic Settings: Adjust slidesToShow and infinite based on itemCount
+  if (itemCount === 0) {
+    return null;
+  }
+
   const settings = {
-    dots: itemCount > 1, // Only show dots if there is more than 1 item
-    infinite: itemCount > 4, // Only go infinite if we have more than the slidesToShow count
-    speed: 600,
-    slidesToShow: Math.min(itemCount, 4), // Never show more slides than we have items
+    dots: itemCount > 1,
+    infinite: itemCount > 4,
+
+    speed: 550,
     slidesToScroll: 1,
-    nextArrow: itemCount > 1 ? <NextArrow /> : null, // Hide arrows if single item
-    prevArrow: itemCount > 1 ? <PrevArrow /> : null,
-    autoplay: itemCount > 1,
-    autoplaySpeed: 4000,
+
+    slidesToShow: Math.min(itemCount, 4),
+
+    autoplay: itemCount > 2,
+    autoplaySpeed: 4500,
+
+    pauseOnHover: true,
     cssEase: "ease-in-out",
+
+    arrows: itemCount > 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+
     responsive: [
       {
         breakpoint: 1280,
-        settings: { 
-            slidesToShow: Math.min(itemCount, 3),
-            infinite: itemCount > 3 
+        settings: {
+          slidesToShow: Math.min(itemCount, 3),
+          infinite: itemCount > 3,
         },
       },
       {
-        breakpoint: 1024,
-        settings: { 
-            slidesToShow: Math.min(itemCount, 2),
-            infinite: itemCount > 2 
+        breakpoint: 768,
+        settings: {
+          slidesToShow: Math.min(itemCount, 2),
+          infinite: itemCount > 2,
         },
       },
       {
         breakpoint: 640,
-        settings: { 
-            slidesToShow: 1, 
-            infinite: itemCount > 1, 
-            arrows: false 
+        settings: {
+          slidesToShow: 1,
+          infinite: itemCount > 1,
+          arrows: false,
+          autoplay: itemCount > 1,
         },
       },
     ],
+
     appendDots: (dots) => (
-      <div className="mt-8">
-        <ul className="flex justify-center gap-1"> {dots} </ul>
+      <div className="mt-5">
+        <ul className="flex items-center justify-center gap-2">
+          {dots}
+        </ul>
       </div>
     ),
-    customPaging: (i) => (
-      <div className="w-2 h-2 rounded-full bg-white/20 transition-all duration-300 hover:bg-teal-400 active-dot:w-6" />
+
+    customPaging: () => (
+      <button
+        type="button"
+        className="
+          block
+          w-2 h-2
+          rounded-full
+          bg-white/20
+          transition-all duration-300
+          hover:bg-teal-400/70
+        "
+        aria-label="Go to slide"
+      />
     ),
   };
 
-  if (itemCount === 0) return null;
-
   return (
-    <div className="relative px-2 py-4">
+   <div className="relative w-full py-3 px-6 overflow-visible">
       <Slider {...settings} className="movie-slider">
         {data.map((movie) => (
-          <div key={movie._id} className="px-1 pb-6 outline-none">
-            <div className="transition-transform duration-300 hover:-translate-y-2">
-              <MovieCard movie={movie} />
+          <div key={movie._id} className="px-1 pb-6">
+            <div
+              className="
+                group
+                transition-all duration-300 ease-out
+                hover:-translate-y-2
+              "
+            >
+              <div
+                className="
+                  rounded-2xl
+                  transition-all duration-300
+                  group-hover:shadow-[0_20px_50px_rgba(20,184,166,0.12)]
+                "
+              >
+                <MovieCard movie={movie} />
+              </div>
             </div>
           </div>
         ))}
       </Slider>
 
-      <style jsx global>{`
+      <style>{`
         .movie-slider .slick-list {
+          margin: 0 -8px;
+          padding: 12px 0 10px;
           overflow: visible;
         }
-        .movie-slider .slick-dots li.slick-active div {
-          width: 40px;
-          background-color: #14b8a6;
-        }
-        .movie-slider .slick-dots li {
-          margin: 0;
-          width: auto;
-        }
-        /* Fix for single items taking up full width instead of repeating */
+
         .movie-slider .slick-track {
-            margin-left: 0;
+          display: flex;
+        }
+
+        .movie-slider .slick-slide {
+          height: auto;
+        }
+
+        .movie-slider .slick-slide > div {
+          height: 100%;
+        }
+
+        .movie-slider .slick-dots {
+          position: static;
+          margin: 0;
+        }
+
+        .movie-slider .slick-dots li {
+          width: auto;
+          height: auto;
+          margin: 0;
+        }
+
+        .movie-slider .slick-dots li button {
+          width: auto;
+          height: auto;
+          padding: 0;
+        }
+
+        .movie-slider .slick-dots li button::before {
+          display: none;
+        }
+
+        .movie-slider .slick-dots li.slick-active button {
+          width: 28px;
+        }
+
+        .movie-slider .slick-dots li.slick-active button {
+          background: #14b8a6;
+          border-radius: 9999px;
+        }
+
+        @media (max-width: 640px) {
+          .movie-slider .slick-list {
+            margin: 0 -4px;
+          }
         }
       `}</style>
     </div>

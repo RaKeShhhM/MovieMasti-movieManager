@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlineHome, AiOutlineLogin, AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineLogin, AiOutlineUserAdd, AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,6 +60,16 @@ const Navigation = () => {
             title="Movies"
           >
             <MdOutlineLocalMovies size={24} />
+          </Link>
+
+          <Link
+            to="/watchlist"
+            className={`p-2 rounded-full transition-all duration-300 hover:bg-white/10 ${
+              location.pathname === "/watchlist" ? "text-teal-400" : "text-gray-400"
+            }`}
+            title="Watchlist"
+          >
+            <AiOutlineHeart size={24} />
           </Link>
         </div>
 

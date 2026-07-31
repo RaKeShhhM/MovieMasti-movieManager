@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import {
   useGetSpecificMovieQuery,
   useAddMovieReviewMutation,
 } from "../../redux/api/movies";
 import MovieTabs from "./MovieTabs";
-import { ChevronLeft, Calendar, Star, Users } from "lucide-react";
+import { ChevronLeft, Calendar, Star, Users, Heart } from "lucide-react";
+import { addToWatchlist, removeFromWatchlist, selectWatchlist } from "../../redux/features/watchlist/watchlistSlice";
 
 const MovieDetails = () => {
   const { id: movieId } = useParams();
@@ -17,6 +18,21 @@ const MovieDetails = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [createReview, { isLoading: loadingMovieReview }] =
     useAddMovieReviewMutation();
+
+  const dispatch = useDispatch();
+  const watchlist = useSelector(selectWatchlist) || [];
+  const isAlreadyInWatchlist = watchlist.some((m) => m._id === movie?._id);
+
+  const toggleWatchlistHandler = () => {
+    if (!movie) return;
+    if (isAlreadyInWatchlist) {
+      dispatch(removeFromWatchlist(movie._id));
+      toast.success("Removed from Watchlist");
+    } else {
+      dispatch(addToWatchlist(movie));
+      toast.success("Added to Watchlist");
+    }
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -36,45 +52,65 @@ const MovieDetails = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pb-20">
       
-      {/* Hero Header Section */}
+      
       <div className="relative h-[60vh] w-full overflow-hidden">
-        
-        {/* Background Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center scale-110 blur-2xl opacity-30"
-          style={{ backgroundImage: `url(${movie?.image})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
-        
-        {/* Content Container */}
-        <div className="relative max-w-[1400px] mx-auto px-6 h-full flex flex-col justify-end pb-10">
-         
+        {/* Background */}
+        <div className="absolute inset-0 bg-cover bg-center scale-110 blur-2xl opacity-30" style={{ backgroundImage: `url(${movie?.image})` }} />
 
-          <div className="flex flex-col md:flex-row gap-10 items-end">
-            {/* Poster Card */}
+       
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+
+        {/* Content */}
+        <div className="relative max-w-[1400px] mx-auto px-6 h-full flex items-end pb-10">
+          <div className="w-full flex flex-col md:flex-row items-end gap-8 lg:gap-10">
+
             <div className="shrink-0 hidden md:block">
               <img
                 src={movie?.image}
                 alt={movie?.name}
-                className="w-[280px] h-[300px] rounded-2xl shadow-2xl border border-white/10"
+                className="w-[240px] lg:w-[280px] h-[280px] lg:h-[340px] object-cover rounded-2xl shadow-2xl border border-white/10"
               />
             </div>
 
-            {/* Title Info */}
-            <div className="flex-1">
-              <div className="flex items-center gap-3 text-teal-400 mb-4 font-semibold tracking-wider">
-                <Calendar size={18} />
-                <span>{movie?.year}</span>
-                <span className="mx-2 text-white/20">|</span>
-                <Star size={18} className="fill-current" />
-                <span>Featured</span>
+            <div className="flex-1 min-w-0">
+
+              
+              <div className="flex flex-wrap items-center gap-3 text-teal-400 mb-4 font-semibold tracking-wider">
+                <div className="flex items-center gap-2">
+                  <Calendar size={18} />
+                  <span>{movie?.year}</span>
+                </div>
+
+                <span className="text-white/20">|</span>
+
+                <div className="flex items-center gap-2">
+                  <Star size={18} className="fill-current" />
+                  <span>Featured</span>
+                </div>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
+
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-5 tracking-tighter text-white">
                 {movie?.name}
               </h1>
-              <p className="text-lg text-gray-400 max-w-3xl leading-relaxed italic">
+
+             
+              <p className="text-base lg:text-lg text-gray-400 max-w-3xl leading-relaxed italic">
                 "{movie?.detail}"
               </p>
+
+              
+              <button
+                onClick={toggleWatchlistHandler}
+                className={`mt-7 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold shadow-lg transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${
+                  isAlreadyInWatchlist
+                    ? "bg-red-600 hover:bg-red-500 text-white"
+                    : "bg-white hover:bg-gray-100 text-teal-900"
+                }`}
+              >
+                <Heart className={isAlreadyInWatchlist ? "fill-current text-white" : "text-teal-900"} size={18} />
+                {isAlreadyInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+              </button>
+
             </div>
           </div>
         </div>
@@ -118,14 +154,14 @@ const MovieDetails = () => {
             </div>
           </div>
 
-          {/* Quick Stats or Promo Card */}
+          {/* Quick Stats or Promo Card
           <div className="bg-gradient-to-br from-teal-600 to-teal-900 rounded-3xl p-8 shadow-lg">
              <h4 className="text-xl font-bold mb-2">Want to save it?</h4>
              <p className="text-white/80 text-sm mb-4">Add this movie to your watchlist for later.</p>
              <button className="w-full bg-white text-teal-900 font-bold py-3 rounded-xl hover:bg-gray-100 transition-colors">
                 Add to Watchlist
              </button>
-          </div>
+          </div> */}
         </div>
 
       </div>

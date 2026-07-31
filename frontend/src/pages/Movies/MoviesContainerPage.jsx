@@ -19,14 +19,13 @@ const MoviesContainerPage = () => {
     setSelectedGenre(genreId === selectedGenre ? null : genreId);
   };
 
-  // --- LOGIC FIX ---
+  
   // Only filter the "New Releases" / "Results Found" row
   const filteredResults = useMemo(() => 
-    newMovies?.filter((m) => !selectedGenre || m.genre === selectedGenre), 
-  [newMovies, selectedGenre]);
+    newMovies?.filter((m) => !selectedGenre || m.genre === selectedGenre), [newMovies, selectedGenre]);
 
   // We keep topMovies as they are so "Critic's Choice" stays unchanged
-  // -----------------
+  
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 md:px-10 mt-12 pb-32">
@@ -81,6 +80,34 @@ const MoviesContainerPage = () => {
           />
         )}
 
+        {/* Empty State */}
+      
+        {selectedGenre && filteredResults?.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-28 px-6 text-center">
+            
+            {/* Icon */}
+            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <span className="text-3xl text-gray-500">🎬</span>
+            </div>
+
+            {/* Heading */}
+            <h3 className="mb-3 text-2xl font-bold tracking-tight text-white">
+              No movies found
+            </h3>
+
+            {/* Description */}
+            <p className="max-w-md text-sm leading-6 text-gray-500">
+              We couldn't find any movies in this genre right now.
+            </p>
+
+            {/* Small hint */}
+            <p className="mt-2 text-xs text-gray-600">
+              Try selecting another genre to discover more movies.
+            </p>
+          </div>
+        )}
+        
+
         {/* Row 2: Critic's Choice (Always stays the same) */}
         {topMovies?.length > 0 && (
           <Section 
@@ -99,13 +126,7 @@ const MoviesContainerPage = () => {
           />
         )}
 
-        {/* Empty State */}
-        {selectedGenre && filteredResults?.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-32 text-center">
-            <h3 className="text-2xl font-bold text-white mb-2">No matches found</h3>
-            <p className="text-gray-500">We couldn't find any movies in this category yet.</p>
-          </div>
-        )}
+
       </main>
     </div>
   );
