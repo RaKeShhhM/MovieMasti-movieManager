@@ -20,7 +20,7 @@ const Main = () => {
   }, [allMovies]);
 
   return (
-    <div className="p-8 ml-72 min-h-screen bg-[#0a0a0a]">
+    <div className="p-4 sm:p-8 pt-20 lg:pt-8 lg:ml-72 ml-0 min-h-screen bg-[#0a0a0a]">
       {/* Header Section */}
       <header className="mb-10">
         <div className="flex items-center gap-3 text-teal-500 mb-2">

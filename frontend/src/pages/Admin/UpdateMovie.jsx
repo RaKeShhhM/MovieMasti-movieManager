@@ -88,9 +88,9 @@ const UpdateMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] p-8 ml-72 flex justify-center items-start pt-24">
-      <Sidebar/>
-      <div className="w-full max-w-5xl bg-white/5 border border-white/10 backdrop-blur-2xl p-10 rounded-[2.5rem] shadow-2xl">
+    <div className="min-h-screen bg-[#0a0a0a] p-4 sm:p-8 pt-20 lg:pt-8 lg:ml-72 ml-0 flex justify-center items-start">
+      <Sidebar />
+      <div className="w-full max-w-5xl bg-white/5 border border-white/10 backdrop-blur-2xl p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-2xl">
         
         <header className="mb-10 flex justify-between items-center">
           <div>

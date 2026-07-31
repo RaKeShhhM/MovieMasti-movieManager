@@ -111,9 +111,9 @@ const CreateMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] p-8 ml-72 flex justify-center items-start pt-24">
+    <div className="min-h-screen bg-[#0a0a0a] p-4 sm:p-8 pt-20 lg:pt-8 lg:ml-72 ml-0 flex justify-center items-start">
       <Sidebar />
-      <div className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-2xl p-10 rounded-[2.5rem] shadow-2xl">
+      <div className="w-full max-w-4xl bg-white/5 border border-white/10 backdrop-blur-2xl p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-2xl">
         <header className="mb-10">
           <h1 className="text-4xl font-black text-white tracking-tight flex items-center gap-4">
             <div className="p-3 bg-teal-500/20 rounded-2xl text-teal-400">
