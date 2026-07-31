@@ -44,7 +44,7 @@ const Login = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-500/10 blur-[120px] rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
 
-      <section className="relative z-10 flex flex-col md:flex-row items-center justify-center w-[90%] max-w-5xl h-full md:h-[600px] bg-white/[0.02] border border-white/10 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-700">
+      <section className="relative z-10 flex flex-col md:flex-row items-center justify-center w-[90%] max-w-5xl h-auto md:h-[600px] my-8 md:my-0 bg-white/[0.02] border border-white/10 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-700">
         
         {/* LEFT SIDE - THE FORM */}
         <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">

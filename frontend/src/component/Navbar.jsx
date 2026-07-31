@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
 
+  if (location.pathname.includes("/admin")) return null;
+
   const linkStyle = (path) => {
     const isActive = location.pathname === path;
 

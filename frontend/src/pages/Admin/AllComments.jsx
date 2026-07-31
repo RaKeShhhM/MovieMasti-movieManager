@@ -30,8 +30,8 @@ const AllComments = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] p-8 ml-72 flex justify-center items-start pt-24">
-      <Sidebar/>
+    <div className="min-h-screen bg-[#0a0a0a] p-4 sm:p-8 pt-20 lg:pt-8 lg:ml-72 ml-0 flex justify-center items-start">
+      <Sidebar />
       <div className="max-w-4xl mx-auto">
         
         {/* Header & Search Section */}
