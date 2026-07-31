@@ -84,7 +84,7 @@ const AllMovies = () => {
             <div className="relative w-full md:flex-1">
               <input
                 type="text"
-                className="w-90% bg-[#2a2a2a] border border-transparent focus:border-red-600 focus:ring-0 text-white h-12 px-6 rounded-xl outline-none transition-all"
+                className="w-full bg-[#2a2a2a] border border-transparent focus:border-red-600 focus:ring-0 text-white h-12 px-6 rounded-xl outline-none transition-all"
                 placeholder="Search for movies..."
                 value={moviesFilter.searchTerm}
                 onChange={handleSearchChange}

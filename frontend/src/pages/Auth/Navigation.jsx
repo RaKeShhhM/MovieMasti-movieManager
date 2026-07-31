@@ -35,10 +35,10 @@ const Navigation = () => {
         
         {/* Navigation Section */}
         <div className="flex items-center gap-4">
-          {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-2 mr-6 group">
-            <div className="w-8 h-8 bg-gradient-to-tr from-red-600 to-red-400 rounded-lg rotate-12 group-hover:rotate-0 transition-transform duration-300" />
-            <span className="text-2xl font-black tracking-tighter text-white">
+          {/* Logo Section - Hidden on mobile, shown on sm and up */}
+          <Link to="/" className="hidden sm:flex items-center gap-2 mr-4 group">
+            <div className="w-6 h-6 bg-gradient-to-tr from-red-600 to-red-400 rounded-lg rotate-12 group-hover:rotate-0 transition-transform duration-300" />
+            <span className="text-lg font-black tracking-tighter text-white">
               MOVIE<span className="text-red-600">MASTI</span>
             </span>
           </Link>

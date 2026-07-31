@@ -20,10 +20,10 @@ const MovieCard = ({ movie }) => {
         </div>
 
         {/* Info Overlay: Sliding Glass Effect */}
-        <div className="absolute inset-x-0 bottom-0 p-5 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20">
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 transform md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 opacity-100 translate-y-0 transition-all duration-500 ease-out z-20">
           
           {/* Glass-morphism Background Plate */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-md -z-10 rounded-t-3xl border-t border-white/10" />
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-md -z-10 rounded-t-3xl border-t border-white/10" />
 
           {/* Metadata */}
           <div className="flex items-center gap-3 mb-2">
@@ -38,7 +38,7 @@ const MovieCard = ({ movie }) => {
           </h3>
 
           {/* "View Details" CTA that appears on hover */}
-          <div className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-tighter text-white/60">
+          <div className="mt-4 hidden md:flex items-center gap-2 text-[10px] font-black uppercase tracking-tighter text-white/60">
             <span className="w-4 h-[1px] bg-red-600" />
             View Details
           </div>
