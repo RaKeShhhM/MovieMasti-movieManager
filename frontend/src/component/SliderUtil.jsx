@@ -106,10 +106,10 @@ const SliderUtil = ({ data = [] }) => {
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
-          infinite: itemCount > 1,
+          slidesToShow: Math.min(itemCount, 2),
+          infinite: itemCount > 2,
           arrows: false,
-          autoplay: itemCount > 1,
+          autoplay: itemCount > 2,
         },
       },
     ],
@@ -168,11 +168,7 @@ const SliderUtil = ({ data = [] }) => {
         .movie-slider .slick-list {
           margin: 0 -8px;
           padding: 12px 0 10px;
-          overflow: visible;
-        }
-
-        .movie-slider .slick-track {
-          display: flex;
+          overflow: hidden;
         }
 
         .movie-slider .slick-slide {
