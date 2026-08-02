@@ -53,29 +53,29 @@ const MovieDetails = () => {
     <div className="min-h-screen bg-[#0a0a0a] text-white pb-20">
       
       
-      <div className="relative h-[60vh] w-full overflow-hidden">
+      <div className="relative min-h-[60vh] md:h-[60vh] w-full overflow-hidden flex items-end">
         {/* Background */}
         <div className="absolute inset-0 bg-cover bg-center scale-110 blur-2xl opacity-30" style={{ backgroundImage: `url(${movie?.image})` }} />
 
-       
+        
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
 
         {/* Content */}
-        <div className="relative max-w-[1400px] mx-auto px-6 h-full flex items-end pb-10">
-          <div className="w-full flex flex-col md:flex-row items-end gap-8 lg:gap-10">
+        <div className="relative max-w-[1400px] w-full mx-auto px-6 pt-24 pb-10 flex items-center md:items-end">
+          <div className="w-full flex flex-col md:flex-row items-center md:items-end gap-8 lg:gap-10">
 
-            <div className="shrink-0 hidden md:block">
+            <div className="shrink-0 block">
               <img
                 src={movie?.image}
                 alt={movie?.name}
-                className="w-[240px] lg:w-[280px] h-[280px] lg:h-[340px] object-cover rounded-2xl shadow-2xl border border-white/10"
+                className="w-[200px] sm:w-[240px] lg:w-[280px] h-[280px] sm:h-[320px] lg:h-[340px] object-cover rounded-2xl shadow-2xl border border-white/10"
               />
             </div>
 
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 flex flex-col items-center md:items-start text-center md:text-left">
 
               
-              <div className="flex flex-wrap items-center gap-3 text-teal-400 mb-4 font-semibold tracking-wider">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 text-teal-400 mb-4 font-semibold tracking-wider">
                 <div className="flex items-center gap-2">
                   <Calendar size={18} />
                   <span>{movie?.year}</span>

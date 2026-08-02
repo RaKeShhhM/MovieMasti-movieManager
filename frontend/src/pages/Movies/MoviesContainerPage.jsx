@@ -68,7 +68,7 @@ const MoviesContainerPage = () => {
       </section>
 
       {/* --- Main Rows --- */}
-      <main className="space-y-20">
+      <main className="space-y-12 md:space-y-20">
         
         {/* Row 1: The Dynamic Row (Changes by Genre) */}
         {filteredResults?.length > 0 && (
@@ -136,7 +136,7 @@ const Section = ({ title, subtitle, data, isMain = false }) => (
   <section className="group">
     <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
       <div>
-        <h2 className={`text-3xl md:text-4xl font-black tracking-tighter ${isMain ? 'text-white' : 'text-white/80'}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter ${isMain ? 'text-white' : 'text-white/80'}`}>
           {title.toUpperCase()}
         </h2>
         <p className="text-sm text-gray-500 font-medium mt-1">
